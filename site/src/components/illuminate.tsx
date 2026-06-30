@@ -42,6 +42,7 @@ export function Illuminate() {
         <AmbientVideo
           className="absolute inset-0"
           mp4="/video/cloudscape.mp4"
+          webm="/video/cloudscape.webm"
           poster="/video/cloudscape-poster.webp"
           rate={0.6}
         />
