@@ -1,0 +1,40 @@
+# Skyclear — Netlify config.
+# For drag-and-drop deploys you just drop the /out folder; this file is used
+# if you later connect the Git repo for auto-deploys.
+[build]
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Static export already emits per-route folders (trailingSlash: true),
+# so no SPA catch-all redirect is needed.
+
+# ── Caching: immutable assets are fingerprinted or content-stable, so cache them
+# for a year. Repeat visits load instantly from cache — no re-download. ──
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/video/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# HTML stays fresh but allows instant back/forward + fast revalidation.
+[[headers]]
+  for = "/"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
