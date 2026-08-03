@@ -1,0 +1,13 @@
+# Netlify headers — applied on drag-and-drop deploys (netlify.toml only applies
+# on Git deploys). Immutable, content-stable assets cached for a year so repeat
+# visits load instantly.
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+/video/*
+  Cache-Control: public, max-age=31536000, immutable
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+/*.svg
+  Cache-Control: public, max-age=31536000, immutable
+/sw.js
+  Cache-Control: public, max-age=0, must-revalidate
